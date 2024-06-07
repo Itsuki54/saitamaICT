@@ -55,10 +55,14 @@ class _TextEditor extends State<TextEditor> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text(
-            "KUDAMONO Code",
-            style: TextStyle(fontWeight: FontWeight.bold),
+          automaticallyImplyLeading: false,
+          title: Row(children: [
+            Text("filename", style: GoogleFonts.anton(fontSize: 32))
+          ]),
+          leading: BackButton(
+            onPressed: () => Navigator.of(context).pop(),
           ),
+          actions: [],
           backgroundColor: Colors.black,
         ),
         body: Column(
