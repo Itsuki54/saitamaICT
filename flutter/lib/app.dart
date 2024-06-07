@@ -1,65 +1,68 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Typist',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: const ColorScheme.light(
+          primary: Colors.black, // 主要な色
+          secondary: Colors.grey, // セカンダリ色
+          surface: Colors.white, // 表面色
+          error: Colors.red, // エラー色
+          onPrimary: Colors.white, // 主要な色の上でのテキスト色
+          onSecondary: Colors.black,
+          onSurface: Colors.black,
+          onError: Colors.red, // エラー色の上でのテキスト色
+          brightness: Brightness.light, // 明るさ
+        ),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      darkTheme: ThemeData(
+        colorScheme: ColorScheme.dark(
+          primary: Colors.grey.shade800, // 主要な色
+          secondary: Colors.white, // セカンダリ色
+          surface: const Color(0xFF363636), // 表面色
+          error: Colors.red, // エラー色
+          onPrimary: Colors.white, // 主要な色の上でのテキスト色
+          onSecondary: Colors.white,
+          onSurface: Colors.white,
+          onError: Colors.red, // エラー色の上でのテキスト色
+        ),
+        useMaterial3: true,
+      ),
+      home: const TextEditor(),
+      //home: const Settings(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
+class TextEditor extends StatefulWidget {
+  const TextEditor({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  // ignore: library_private_types_in_public_api
+  _TextEditor createState() => _TextEditor();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
+class _TextEditor extends State<TextEditor> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+        appBar: AppBar(
+          title: const Text(
+            "KUDAMONO Code",
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+          backgroundColor: Colors.black,
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
-    );
+        body: Column(
+          children: [],
+        ));
   }
 }
