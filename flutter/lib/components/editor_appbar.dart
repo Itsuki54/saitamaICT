@@ -4,8 +4,19 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:KUDAMONOCode/components/exec_button.dart';
 import 'package:KUDAMONOCode/components/terminal_button.dart';
 
-class EditorAppBar extends StatelessWidget implements PreferredSizeWidget {
+class EditorAppBar extends StatefulWidget implements PreferredSizeWidget {
   const EditorAppBar({super.key});
+
+  @override
+  EditorAppBarState createState() => EditorAppBarState();
+
+  @override
+  Size get preferredSize => const Size.fromHeight(63);
+}
+
+class EditorAppBarState extends State<EditorAppBar> {
+  bool isShowedTerminal = false;
+  bool isExeced = false;
 
   @override
   Widget build(BuildContext context) {
@@ -14,8 +25,20 @@ class EditorAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
         Text("filename", style: GoogleFonts.anton(fontSize: 32)),
         const Expanded(child: SizedBox()),
-        TerminalButton(onPressed: () {}, isOn: true),
-        ExecButton(isOn: true, onPressed: () {}),
+        TerminalButton(
+            isOn: isShowedTerminal,
+            onPressed: () {
+              setState(() {
+                isShowedTerminal = !isShowedTerminal;
+              });
+            }),
+        ExecButton(
+            isOn: isExeced,
+            onPressed: () {
+              setState(() {
+                isExeced = !isExeced;
+              });
+            }),
       ]),
       leading: BackButton(
         onPressed: () => Navigator.of(context).pop(),
@@ -23,7 +46,4 @@ class EditorAppBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: Colors.black,
     );
   }
-
-  @override
-  Size get preferredSize => const Size.fromHeight(63);
 }
