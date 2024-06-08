@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
       title: 'KUDAMONO Code',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        splashColor: Colors.white,
         colorScheme: const ColorScheme.light(
           primary: Colors.black, // 主要な色
           secondary: Colors.grey, // セカンダリ色
