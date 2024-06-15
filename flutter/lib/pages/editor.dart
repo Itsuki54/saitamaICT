@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_code_editor/flutter_code_editor.dart';
+import 'package:flutter_highlight/themes/monokai-sublime.dart';
+import 'package:highlight/languages/java.dart';
 // UI Components
 import 'package:KUDAMONOCode/components/editor_appbar.dart';
 
@@ -13,46 +16,31 @@ class TextEditorState extends State<TextEditor> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: EditorAppBar(),
-        body: Column(
-          children: [],
-        ));
+      appBar: EditorAppBar(),
+      body: CodeEditor(),
+      // body: Column(
+      //   children: [],
+      // ),
+    );
   }
 }
 
-class TextEditorScreen extends StatefulWidget {
-  @override
-  _TextEditorScreenState createState() => _TextEditorScreenState();
-}
+class CodeEditor extends StatelessWidget {
+  CodeEditor({super.key});
 
-class _TextEditorScreenState extends State<TextEditorScreen> {
-  TextEditingController _controller = TextEditingController();
+  final controller = CodeController(
+    text: '...', // Initial code
+    language: java,
+  );
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        children: [
-          Expanded(
-            child: TextField(
-              controller: _controller,
-              maxLines: null,
-              decoration: const InputDecoration(
-                hintText: 'Enter your text here...',
-                border: OutlineInputBorder(),
-              ),
-            ),
-          ),
-          const SizedBox(height: 16),
-          ElevatedButton(
-            onPressed: () {
-              // You can add your save logic here
-              print('Text: ${_controller.text}');
-            },
-            child: const Text('Save'),
-          ),
-        ],
+    return CodeTheme(
+      data: CodeThemeData(styles: monokaiSublimeTheme),
+      child: SingleChildScrollView(
+        child: CodeField(
+          controller: controller,
+        ),
       ),
     );
   }
