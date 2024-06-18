@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
 class TerminalButton extends StatelessWidget {
-  const TerminalButton({super.key, required this.onPressed, this.isOn = false});
+  const TerminalButton({super.key, required this.onPressed});
 
-  final bool isOn;
   final VoidCallback onPressed;
 
   @override
@@ -15,7 +14,7 @@ class TerminalButton extends StatelessWidget {
         minimumSize: const Size(24, 24),
         padding: const EdgeInsets.all(12),
       ),
-      child: Icon(Icons.terminal, color: isOn ? Colors.amber : Colors.grey),
+      child: const Icon(Icons.terminal, color: Colors.amber),
     );
   }
 }

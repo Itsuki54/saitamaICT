@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ExecButton extends StatelessWidget {
-  const ExecButton({super.key, required this.onPressed, this.isOn = false});
+  const ExecButton({super.key, required this.onPressed});
 
-  final bool isOn;
   final VoidCallback onPressed;
 
   @override
@@ -15,7 +14,7 @@ class ExecButton extends StatelessWidget {
         minimumSize: const Size(24, 24),
         padding: const EdgeInsets.all(12),
       ),
-      child: Icon(Icons.flag, color: isOn ? Colors.green : Colors.grey),
+      child: const Icon(Icons.flag, color: Colors.green),
     );
   }
 }

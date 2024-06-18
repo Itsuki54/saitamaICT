@@ -34,23 +34,19 @@ class EditorAppBarState extends State<EditorAppBar> {
             style: GoogleFonts.anton(
                 fontSize: 32, color: Theme.of(context).colorScheme.onPrimary)),
         const Expanded(child: SizedBox()),
-        TerminalButton(
-            isOn: isShowedTerminal,
-            onPressed: () {
-              setState(() {
-                isShowedTerminal = !isShowedTerminal;
-              });
-              widget.isTerminal();
-            }),
+        TerminalButton(onPressed: () {
+          setState(() {
+            isShowedTerminal = !isShowedTerminal;
+          });
+          widget.isTerminal();
+        }),
         const SizedBox(width: 8),
-        ExecButton(
-            isOn: isExeced,
-            onPressed: () {
-              setState(() {
-                isExeced = !isExeced;
-              });
-              widget.isExec();
-            }),
+        ExecButton(onPressed: () {
+          setState(() {
+            isExeced = !isExeced;
+          });
+          widget.isExec();
+        }),
       ]),
       backgroundColor: Colors.black,
     );
