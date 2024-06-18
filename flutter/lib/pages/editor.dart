@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_code_editor/flutter_code_editor.dart';
-import 'package:flutter_highlight/themes/monokai-sublime.dart';
-import 'package:highlight/languages/java.dart';
 // UI Components
+import 'package:KUDAMONOCode/components/code_editor.dart';
 import 'package:KUDAMONOCode/components/editor_appbar.dart';
 
 class TextEditor extends StatefulWidget {
@@ -13,35 +11,56 @@ class TextEditor extends StatefulWidget {
 }
 
 class TextEditorState extends State<TextEditor> {
+  bool isShowedTerminal = false;
+  String std = "This is Standard Output";
+  String stderr = "This is Standard Error";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: EditorAppBar(),
-      body: CodeEditor(),
-      // body: Column(
-      //   children: [],
-      // ),
-    );
-  }
-}
-
-class CodeEditor extends StatelessWidget {
-  CodeEditor({super.key});
-
-  final controller = CodeController(
-    text: '...', // Initial code
-    language: java,
-  );
-
-  @override
-  Widget build(BuildContext context) {
-    return CodeTheme(
-      data: CodeThemeData(styles: monokaiSublimeTheme),
-      child: SingleChildScrollView(
-        child: CodeField(
-          controller: controller,
-        ),
+      backgroundColor: Theme.of(context).colorScheme.surface,
+      appBar: EditorAppBar(
+        isTerminal: () {
+          showDialog(
+            context: context,
+            builder: (builder) => Dialog(
+                child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          const Row(children: [CloseButton()]),
+                          Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    children: [
+                                      Row(children: [
+                                        Text(std,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold))
+                                      ]),
+                                      const SizedBox(height: 15),
+                                      Row(children: [
+                                        Text(stderr,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.red))
+                                      ]),
+                                    ],
+                                  ),
+                                ),
+                              ])),
+                        ]))),
+          );
+        },
+        isExec: () {},
       ),
+      //body: Scaffold()
+      body: CodeEditor(),
     );
   }
 }
