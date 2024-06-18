@@ -12,7 +12,8 @@ class ExecButton extends StatelessWidget {
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         shape: const CircleBorder(),
-        padding: const EdgeInsets.all(20),
+        minimumSize: const Size(24, 24),
+        padding: const EdgeInsets.all(12),
       ),
       child: Icon(Icons.flag, color: isOn ? Colors.green : Colors.grey),
     );

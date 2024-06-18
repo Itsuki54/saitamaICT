@@ -5,13 +5,20 @@ import 'package:KUDAMONOCode/components/exec_button.dart';
 import 'package:KUDAMONOCode/components/terminal_button.dart';
 
 class EditorAppBar extends StatefulWidget implements PreferredSizeWidget {
-  const EditorAppBar({super.key});
+  const EditorAppBar({
+    super.key,
+    required this.isTerminal,
+    required this.isExec,
+  });
+
+  final Function isTerminal;
+  final Function isExec;
 
   @override
   EditorAppBarState createState() => EditorAppBarState();
 
   @override
-  Size get preferredSize => const Size.fromHeight(63);
+  Size get preferredSize => const Size.fromHeight(60);
 }
 
 class EditorAppBarState extends State<EditorAppBar> {
@@ -23,7 +30,9 @@ class EditorAppBarState extends State<EditorAppBar> {
     return AppBar(
       automaticallyImplyLeading: false,
       title: Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
-        Text("filename", style: GoogleFonts.anton(fontSize: 32)),
+        Text("filename",
+            style: GoogleFonts.anton(
+                fontSize: 32, color: Theme.of(context).colorScheme.onPrimary)),
         const Expanded(child: SizedBox()),
         TerminalButton(
             isOn: isShowedTerminal,
@@ -31,18 +40,18 @@ class EditorAppBarState extends State<EditorAppBar> {
               setState(() {
                 isShowedTerminal = !isShowedTerminal;
               });
+              widget.isTerminal();
             }),
+        const SizedBox(width: 8),
         ExecButton(
             isOn: isExeced,
             onPressed: () {
               setState(() {
                 isExeced = !isExeced;
               });
+              widget.isExec();
             }),
       ]),
-      leading: BackButton(
-        onPressed: () => Navigator.of(context).pop(),
-      ),
       backgroundColor: Colors.black,
     );
   }
