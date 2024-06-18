@@ -21,7 +21,7 @@ class DirectoryButton extends StatelessWidget {
         )),
         child: SizedBox(
           width: 110,
-          height: 140,
+          height: 150,
           child: Stack(
             children: [
               Align(
