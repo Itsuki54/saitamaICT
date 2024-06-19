@@ -42,7 +42,6 @@ class HomeState extends State<Home> {
                       children: [
                         FileButton(
                           onPressed: () {
-                            print("Push");
                             Navigator.of(context).push(MaterialPageRoute(
                                 builder: (context) => const TextEditor()));
                           },

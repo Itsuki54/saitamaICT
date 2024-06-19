@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 // Pages
-import 'package:KUDAMONOCode/pages/editor.dart';
 import 'package:KUDAMONOCode/pages/home.dart';
 
 class MyApp extends StatelessWidget {
@@ -26,7 +25,6 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      //home: const TextEditor(),
       home: const Home(),
       //home: const Settings(),
     );

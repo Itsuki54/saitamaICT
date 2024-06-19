@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class OutputDialog extends StatelessWidget {
   const OutputDialog({
@@ -19,7 +20,14 @@ class OutputDialog extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  const Row(children: [CloseButton()]),
+                  Row(children: [
+                    const SizedBox(width: 8),
+                    Text("Output",
+                        style: GoogleFonts.anton(
+                            fontSize: 24, fontWeight: FontWeight.bold)),
+                    const Expanded(child: SizedBox()),
+                    const CloseButton(),
+                  ]),
                   Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(children: [
@@ -35,9 +43,9 @@ class OutputDialog extends StatelessWidget {
                               const SizedBox(height: 15),
                               Row(children: [
                                 Text(stderr,
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                         fontWeight: FontWeight.bold,
-                                        color: Colors.red))
+                                        color: Colors.red.shade700))
                               ]),
                             ],
                           ),
