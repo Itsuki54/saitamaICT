@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-
 import 'package:google_fonts/google_fonts.dart';
+// pages
+import 'package:KUDAMONOCode/pages/editor.dart';
+// components
 import 'package:KUDAMONOCode/components/file_button.dart';
-import 'package:KUDAMONOCode/components/directory_button.dart';
+import 'package:KUDAMONOCode/components/add_file_button.dart';
 import 'package:KUDAMONOCode/components/home_appbar.dart';
 
 class Home extends StatefulWidget {
@@ -39,13 +41,18 @@ class HomeState extends State<Home> {
                       shrinkWrap: true,
                       children: [
                         FileButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            print("Push");
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => const TextEditor()));
+                          },
                           onLeaderPressed: () {},
                           fileName: "abcd1234",
                         ),
                       ]),
                 ],
               ))
-        ]));
+        ]),
+        floatingActionButton: AddFileButton(onPressed: () {}));
   }
 }
