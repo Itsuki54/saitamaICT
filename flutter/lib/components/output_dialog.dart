@@ -21,12 +21,17 @@ class OutputDialog extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Row(children: [
-                    const SizedBox(width: 8),
                     Text("Output",
                         style: GoogleFonts.anton(
                             fontSize: 24, fontWeight: FontWeight.bold)),
                     const Expanded(child: SizedBox()),
                     const CloseButton(),
+                  ]),
+                  Row(children: [
+                    const SizedBox(width: 8),
+                    Text("Output",
+                        style: GoogleFonts.anton(
+                            fontSize: 24, fontWeight: FontWeight.bold)),
                   ]),
                   Padding(
                       padding: const EdgeInsets.all(8.0),
