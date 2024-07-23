@@ -30,7 +30,7 @@ class EditorAppBarState extends State<EditorAppBar> {
     return AppBar(
       automaticallyImplyLeading: false,
       title: Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
-        Text("filename",
+        Text("KDMN Code",
             style: GoogleFonts.anton(
                 fontSize: 32, color: Theme.of(context).colorScheme.onPrimary)),
         const Expanded(child: SizedBox()),
